@@ -1,0 +1,152 @@
+.home {
+  min-height: 100vh;
+
+  .navbar {
+    padding: 20px 0;
+    box-shadow: 0 2px 4px -2px gray;
+
+    @media (min-width: 768px) {
+      padding: 30px 0;
+    }
+
+    .logo {
+      margin: 0;
+    }
+
+    h3 {
+      font-size: 16px;
+
+      @media (min-width: 476px) {
+        font-size: 20px;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .form {
+    text-align: center;
+    margin: 24px auto;
+
+    input {
+      max-width: 100%;
+      font-size: 14px;
+
+      @media (min-width: 768px) {
+        max-width: 70%;
+        font-size: 16px;
+      }
+    }
+
+    div[class~="ant-form-item-explain-error"] {
+      font-size: 12px;
+
+      @media (min-width: 768px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .list {
+    .item {
+      padding: 8px 0;
+
+      @media (min-width: 768px) {
+        padding: 12px 0;
+      }
+
+      ul[class~="ant-list-item-action"] {
+        margin-inline-start: 12px;
+
+        @media (min-width: 476px) {
+          margin-inline-start: 24px;
+        }
+
+        @media (min-width: 768px) {
+          margin-inline-start: 48px;
+        }
+
+        button {
+          padding-left: 8px;
+          padding-right: 8px;
+
+          @media (min-width: 768px) {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+      }
+
+      .text {
+        h4 {
+          font-size: 12px;
+
+          @media (min-width: 476px) {
+            font-size: 14px;
+          }
+
+          @media (min-width: 768px) {
+            font-size: 16px;
+          }
+        }
+
+        &.done {
+          text-decoration: line-through;
+
+          h4 {
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+
+  .empty {
+    h3 {
+      font-size: 16px;
+
+      @media (min-width: 476px) {
+        font-size: 20px;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+
+    span {
+      font-size: 12px;
+
+      @media (min-width: 476px) {
+        font-size: 14px;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .scroll {
+    > div {
+      right: 50px !important;
+
+      @media (max-width: 768px) {
+        bottom: 20px !important;
+        right: unset !important;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      .wrapper {
+        color: #1dd57a;
+        background: white;
+        border: 1px solid #1dd57a;
+        border-radius: 10px;
+        padding: 8px 12px;
+      }
+    }
+  }
+}

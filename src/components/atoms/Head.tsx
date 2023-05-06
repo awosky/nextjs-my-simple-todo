@@ -9,8 +9,8 @@ const Head = (props: Props) => {
   const { title, description } = props;
 
   const defaultMeta = {
-    title: "My Simple Todo",
-    description: "My Simple Todo is a simple to do web application",
+    title: "My ToDo",
+    description: "My ToDo is a simple to do web application",
   };
 
   return (

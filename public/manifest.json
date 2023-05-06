@@ -1,6 +1,6 @@
 {
-  "name": "My Simple To Do",
-  "short_name": "My Simple To Do",
+  "name": "My ToDo",
+  "short_name": "My ToDo",
   "icons": [
     {
       "src": "/icons/android-icon-36x36.png",

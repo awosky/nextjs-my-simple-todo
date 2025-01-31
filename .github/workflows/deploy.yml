@@ -33,7 +33,7 @@ jobs:
 
       - name: Upload to cPanel via FTP
         run: |
-          lftp -e "set ssl:check-hostname no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -R ./out /public_html"
+          lftp -e "set ssl:check-hostname no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -R ./out /todo.faisalhakim.com"
         env:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}

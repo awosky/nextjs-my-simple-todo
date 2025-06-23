@@ -40,7 +40,6 @@ export const addFirebaseDocument = async (
 export const updateFirebaseDocument = async (
   collection: string,
   id: string,
-
   values: object
 ) => {
   await updateDoc(doc(getFirestore(firebaseApp), collection, id), values);

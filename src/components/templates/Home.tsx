@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -13,7 +14,7 @@ export interface ToDo {
   email: string;
   title: string;
   isDone: boolean;
-  createdAt: string;
+  createdAt: Timestamp;
 }
 
 const Home = () => {

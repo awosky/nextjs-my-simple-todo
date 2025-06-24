@@ -39,7 +39,7 @@ jobs:
           lftp -c "
             set ftp:ssl-allow no;
             open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
-            mirror -R ./out /public_html/todo.faisalhakim.com
+            mirror -R ./out /todo.faisalhakim.com
           "
         env:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}

@@ -38,7 +38,11 @@ const TodoForm = () => {
           },
         ]}
       >
-        <Input size="large" placeholder="Create your new task here..." />
+        <Input.TextArea
+          placeholder="Create your new task here..."
+          size="large"
+          autoSize={{ minRows: 1, maxRows: 3 }}
+        />
       </Form.Item>
       <Form.Item>
         <Button

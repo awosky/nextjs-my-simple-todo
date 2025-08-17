@@ -1,4 +1,4 @@
-name: Deploy to cPanel
+name: Deploy to cPanel via SFTP
 
 on:
   push:
@@ -10,13 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install lftp -y
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Create .env file
+      - name: 🧪 Create .env file
         run: |
           echo "NEXT_PUBLIC_FIREBASE_API_KEY=${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}" >> .env
           echo "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}" >> .env
@@ -25,16 +27,19 @@ jobs:
           echo "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}" >> .env
           echo "NEXT_PUBLIC_FIREBASE_APP_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}" >> .env
 
-      - name: Install dependencies and build
+      - name: 🛠 Install dependencies and build
         run: |
           npm ci
           npm run build
           npm run export
 
-      - name: Upload to cPanel via FTP
-        run: |
-          lftp -e "set ssl:check-hostname no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -R ./out /todo.faisalhakim.com"
-        env:
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_HOST: ${{ secrets.FTP_HOST }}
+      - name: 📤 Deploy via SFTP (custom port)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          source: "./out/*"
+          target: "/home/${{ secrets.SFTP_USERNAME }}/todo.faisalhakim.com"
+          strip_components: 1
